@@ -9,6 +9,7 @@ import { AuthenticationGuard } from './authentication-service/authentication.gua
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { UserSalesListComponent } from './user-sales-list/user-sales-list.component';
 import { AllSalesListComponent } from './all-sales-list/all-sales-list.component';
+import { ReportSaleFormComponent } from './report-sale-form/report-sale-form.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: "login", component: LoginFormComponent },
   { path: "register", component: RegistrationFormComponent },
   { path: "users", component: UserListComponent, canActivate: [AuthenticationGuard, AdminRoleGuard] },
+
   { path: "mysales", component: UserSalesListComponent, canActivate: [AuthenticationGuard] },
+  { path: "report-sale", component: ReportSaleFormComponent, canActivate: [AuthenticationGuard] },
   { path: "sales", component: AllSalesListComponent, canActivate: [AuthenticationGuard, AdminRoleGuard] },
 
 ];

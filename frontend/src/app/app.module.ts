@@ -36,6 +36,8 @@ import { AuthenticationServiceService } from './authentication-service/authentic
 import { AdminRoleGuard } from './authentication-service/admin-role.guard';
 import { SaleListComponent } from './sale-list/sale-list.component';
 import { AllSalesListComponent } from './all-sales-list/all-sales-list.component';
+import { UserSalesListComponent } from './user-sales-list/user-sales-list.component';
+import { ReportSaleFormComponent } from './report-sale-form/report-sale-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AllSalesListComponent } from './all-sales-list/all-sales-list.component
     LoginFormComponent,
     RegistrationFormComponent,
     SaleListComponent,
+    UserSalesListComponent,
     AllSalesListComponent,
+    ReportSaleFormComponent,
   ],
   imports: [
     BrowserModule,

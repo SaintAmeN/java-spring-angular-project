@@ -18,34 +18,6 @@ export class AuthenticationServiceService {
     private router: Router) {
   }
 
-  hasRole(role: string): boolean {
-    return this.loggedInUser != null && this.loggedInUser.roles.includes(role)
-  }
-
-  getUserId(): number | null {
-    this.refreshAuthentication()
-    if (this.loggedInUser != null) {
-      return this.loggedInUser.id
-    }
-
-    return null
-  }
-
-  private refreshAuthentication(): void {
-    if (this.authorizationHeader == null) {
-      const token = localStorage.getItem(LOCAL_STORAGE_AUTH_TOKEN)
-      if (token != null) {
-        this.authorizationHeader = token;
-        this.loggedInUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_AUTH_USER)!)
-      }
-    }
-  }
-
-  getAuthorizationHeader(): string | null {
-    this.refreshAuthentication()
-    return this.authorizationHeader
-  }
-
   logout() {
     localStorage.removeItem(LOCAL_STORAGE_AUTH_TOKEN)
     localStorage.removeItem(LOCAL_STORAGE_AUTH_USER)
@@ -55,17 +27,13 @@ export class AuthenticationServiceService {
     this.router.navigate([''])
   }
 
-  isLoggedIn(): boolean {
-    return (this.getAuthorizationHeader() != null)
-  }
-
   authenticate(request: AuthenticationRequest): void {
     this.loggingIn = true;
 
     this.httpClient.post<UserDTO>("http://localhost:8080/login", request,
       {
         observe: 'response',
-        withCredentials: false
+        withCredentials: false,
       })
       .subscribe({
         next: (data) => {
@@ -95,5 +63,39 @@ export class AuthenticationServiceService {
           this.loggingIn = false;
         }
       })
+  }
+
+
+  // // // // HELPERS
+
+  hasRole(role: string): boolean {
+    return this.loggedInUser != null && this.loggedInUser.roles.includes(role)
+  }
+
+  getUserId(): number | null {
+    this.refreshAuthentication()
+    if (this.loggedInUser != null) {
+      return this.loggedInUser.id
+    }
+
+    return null
+  }
+
+  private refreshAuthentication(): void {
+    if (this.authorizationHeader == null) {
+      const token = localStorage.getItem(LOCAL_STORAGE_AUTH_TOKEN)
+      if (token != null) {
+        this.authorizationHeader = token;
+        this.loggedInUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_AUTH_USER)!)
+      }
+    }
+  }
+
+  getAuthorizationHeader(): string | null {
+    this.refreshAuthentication()
+    return this.authorizationHeader
+  }
+  isLoggedIn(): boolean {
+    return (this.getAuthorizationHeader() != null)
   }
 }

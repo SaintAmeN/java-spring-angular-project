@@ -1,0 +1,35 @@
+.sales-list-content {
+}
+
+.sales-table {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid red;
+}
+
+.mat-column-sale-id {
+  width: 48px;
+  max-width: 48px;
+}
+
+.mat-column-product-name {
+  width: 128px;
+  max-width: 128px;
+}
+
+.mat-column-sale-date-time {
+  width: 128px;
+  max-width: 128px;
+}
+
+.mat-column-quantity {
+  width: 64px;
+  max-width: 64px;
+}
+
+.mat-column-avg-unit-price {
+  width: 128px;
+  max-width: 128px;
+}
+
+

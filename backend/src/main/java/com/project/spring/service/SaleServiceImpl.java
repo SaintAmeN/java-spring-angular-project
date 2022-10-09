@@ -75,6 +75,7 @@ public class SaleServiceImpl implements SaleService {
         }
 
         // zapis do bazy
+        sale.setUser(applicationUser);
         sale = saleRepository.save(sale);
 
         // zwracamy rekord

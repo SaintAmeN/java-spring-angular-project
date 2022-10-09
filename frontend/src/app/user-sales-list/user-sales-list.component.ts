@@ -5,7 +5,7 @@ import { BACKEND_BASE_URL } from '../model/constants';
 import { Sale } from '../model/sale';
 
 @Component({
-  selector: 'app-all-sales-list',
+  selector: 'app-user-sales-list',
   templateUrl: './user-sales-list.component.html',
   styleUrls: ['./user-sales-list.component.css']
 })
