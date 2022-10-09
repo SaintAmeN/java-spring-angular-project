@@ -7,6 +7,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AdminRoleGuard } from './authentication-service/admin-role.guard';
 import { AuthenticationGuard } from './authentication-service/authentication.guard';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { UserSalesListComponent } from './user-sales-list/user-sales-list.component';
+import { AllSalesListComponent } from './all-sales-list/all-sales-list.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -15,6 +17,9 @@ const routes: Routes = [
   { path: "login", component: LoginFormComponent },
   { path: "register", component: RegistrationFormComponent },
   { path: "users", component: UserListComponent, canActivate: [AuthenticationGuard, AdminRoleGuard] },
+  { path: "mysales", component: UserSalesListComponent, canActivate: [AuthenticationGuard] },
+  { path: "sales", component: AllSalesListComponent, canActivate: [AuthenticationGuard, AdminRoleGuard] },
+
 ];
 
 @NgModule({

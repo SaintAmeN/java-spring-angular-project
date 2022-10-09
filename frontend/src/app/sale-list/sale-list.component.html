@@ -1,0 +1,46 @@
+<mat-card>
+  <mat-card-title>Sales List</mat-card-title>
+  <mat-card-subtitle>This is a list of sales</mat-card-subtitle>
+  <mat-card-content class="sales-list-content">
+    <table mat-table [dataSource]="sales" class="mat-elevation-z2 sales-table">
+
+      <ng-container matColumnDef="sale-id">
+        <th mat-header-cell *matHeaderCellDef>Sale Id</th>
+        <td mat-cell *matCellDef="let sale">{{sale.saleId}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="product-name">
+        <th mat-header-cell *matHeaderCellDef>Product Name</th>
+        <td mat-cell *matCellDef="let sale">{{sale.productName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sale-date-time">
+        <th mat-header-cell *matHeaderCellDef>Sale date time:</th>
+        <td mat-cell *matCellDef="let sale">{{sale.saleDateTime}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity:</th>
+        <td mat-cell *matCellDef="let sale">{{sale.quantity}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="avg-unit-price">
+        <th mat-header-cell *matHeaderCellDef>Average Unit price:</th>
+        <td mat-cell *matCellDef="let sale">{{sale.avgUnitPrice}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sales-person-first-name">
+        <th mat-header-cell *matHeaderCellDef>Sales Person first name:</th>
+        <td mat-cell *matCellDef="let sale">{{sale.salesPersonFirstName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sales-person-last-name">
+        <th mat-header-cell *matHeaderCellDef>Sales Person last name:</th>
+        <td mat-cell *matCellDef="let sale">{{sale.salesPersonLastName}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="getVisibleColumnNames()"></tr>
+      <tr mat-row *matRowDef="let row; columns: getVisibleColumnNames()"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
