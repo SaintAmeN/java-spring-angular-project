@@ -48,4 +48,10 @@ public class ApplicationUser implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<ApplicationUserRole> roles;
 
+    // Linked entities
+    //
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private Set<Sale> sales;
 }
